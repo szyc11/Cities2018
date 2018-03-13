@@ -5,8 +5,11 @@
  */
 package cities2018;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  *
@@ -24,10 +27,64 @@ import java.util.Map;
         countries.put("Spain", "Madrid");
         
     }
-
-    @Override
-    public String toString() {
-        return "Countries{" + "countries=" + countries + '}';
+    
+    public Collection<String> capitals()
+    {
+        return countries.values();
+    }
+    
+    public Collection<String> countries()
+    {
+        return countries.keySet();
+    }
+    
+    public String toString()
+    {
+        return countries.toString();
+    }   
+    
+    public Collection<String> sortedCapitals()
+    {
+        TreeSet set = new TreeSet();
+        set.addAll(capitals());
+        return set;
+        
+    }
+    
+    public Collection<String> sortedCountries()
+    {
+        TreeSet set = new TreeSet();
+        set.addAll(countries());
+        return set;
+    }
+    
+    public Map<String,String> sortedByCapitals()
+    {
+       TreeMap map = new TreeMap();
+       return map;
+      
+    }
+        
+     public Map<String,String> sortedByCountries()
+    {
+       Map<String,String> map = new TreeMap();
+       for(String key : countries.keySet())
+       {
+           String value = countries.get(key);
+           map.put(value, key);
+       }
+       return map;
+    }
+  
+    public static void main(String[] args) 
+    {
+     Countries c = new Countries();
+     System.out.println(c);
+     System.out.println(c.capitals());
+     System.out.println(c.countries());
+     System.out.println("Sorted:");
+     System.out.println(c.sortedCapitals());
+     System.out.println(c.sortedCountries());
     }
     
     
